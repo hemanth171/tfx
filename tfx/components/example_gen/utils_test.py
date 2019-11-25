@@ -195,6 +195,21 @@ class UtilsTest(tf.test.TestCase):
     })
     self.assertEqual(0, len(output_config.split_config.splits))
 
+  def testParameterTypeCheck(self):
+    with self.assertRaises(RuntimeError):
+      _ = utils.generate_output_split_names(
+          input_config={
+              'splits': [{
+                  'name':
+                      data_types.RuntimeParameter(
+                          name='wrong-type-param', ptype=int)
+              }, {
+                  'name': 'eval',
+                  'pattern': 'eval/*'
+              }]
+          },
+          output_config=example_gen_pb2.Output())
+
 
 if __name__ == '__main__':
   tf.test.main()
