@@ -24,6 +24,8 @@
 *   Raise exceptions when container building fails.
 *   Enhanced custom slack component by adding a kubeflow example.
 *   Allow windows style paths in Transform component cache.
+*   Fixed loading trainer and transformation functions from python module files
+    without .py extension.
 
 ### Deprecations
 
